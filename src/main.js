@@ -11,21 +11,22 @@ let btn = document.querySelector('.button')
 function calcular() {
     let valorHora = (Number(valorProjeto.value) / (Number(diasEfetivos.value) * 4 * Number(horasDiarias.value)) ) + ( ( Number(diasFerias.value) * Number(diasEfetivos.value) * Number(horasDiarias.value) ) )
 
-    return valorHora
+    renderResult(valorHora)
 }
 
-function renderResult() {
-
-    let resultado = calcular()
-
+function renderResult(resultado) {
     let divResult = document.createElement('div')
         divResult.classList.add('result')
+
+    if(!isNaN(resultado) && isFinite(resultado)) {
         divResult.innerHTML = `Valor por hora: ${resultado}`
         container.appendChild(divResult)
-
+    } else {
+        alert('Preencha todos os campos!')
+    }
 }
 
-btn.addEventListener('click', renderResult)
+btn.addEventListener('click', calcular)
 
 
 
