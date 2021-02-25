@@ -7,14 +7,13 @@ let diasFerias = document.querySelector('.ferias')
 
 let btn = document.querySelector('.button')
 
+const calcular = () => {
+    let valorHora = valorProjeto.value / (diasEfetivos.value * 4 * horasDiarias.value) + diasFerias.value * diasEfetivos.value * horasDiarias.value
 
-function calcular() {
-    let valorHora = (Number(valorProjeto.value) / (Number(diasEfetivos.value) * 4 * Number(horasDiarias.value)) ) + ( ( Number(diasFerias.value) * Number(diasEfetivos.value) * Number(horasDiarias.value) ) )
-
-    renderResult(valorHora)
+    renderResult(valorHora.toFixed(2))
 }
 
-function renderResult(resultado) {
+const renderResult = resultado => {
     let divResult = document.createElement('div')
         divResult.classList.add('result')
 
